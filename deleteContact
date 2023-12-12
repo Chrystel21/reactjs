@@ -1,1 +1,23 @@
- jkk
+// components/deleteContact.jsx
+import React from 'react';
+
+const DeleteContact = ({ contact, onClose }) => {
+  const handleDelete = () => {
+    // Implement logic to delete contact
+    // Call API or update state as per your application logic
+    onClose();
+  };
+
+  return (
+    <div className="modal">
+      {/* Display delete confirmation in a modal */}
+      <h2>Delete Contact</h2>
+      <p>Are you sure you want to delete {contact.fullName}?</p>
+      <button onClick={handleDelete}>Delete</button>
+      <button onClick={onClose}>Cancel</button>
+    </div>
+  );
+};
+
+export default DeleteContact;
+
