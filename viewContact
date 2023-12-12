@@ -1,1 +1,20 @@
-hfhjfj
+// components/viewContact.jsx
+import React from 'react';
+
+const ViewContact = ({ contact, onClose }) => {
+  return (
+    <div className="modal">
+      {/* Display contact details in a modal */}
+      <h2>Contact Details</h2>
+      <p>Full Name: {contact.fullName}</p>
+      <p>Email: {contact.email}</p>
+      <p>Contact Number: {contact.contactNumber}</p>
+      <p>Location: {contact.location}</p>
+      <p>Registered Date: {contact.registeredDate}</p>
+      <button onClick={onClose}>Close</button>
+    </div>
+  );
+};
+
+export default ViewContact;
+
