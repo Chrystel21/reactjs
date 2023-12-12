@@ -1,1 +1,25 @@
-hhh
+// components/updateContact.jsx
+import React, { useState } from 'react';
+
+const UpdateContact = ({ contact, onClose }) => {
+  const [updatedContact, setUpdatedContact] = useState({ ...contact });
+
+  const handleUpdate = () => {
+    // Implement logic to update contact
+    // setUpdatedContact(updatedContact);
+    // Call API or update state as per your application logic
+    onClose();
+  };
+
+  return (
+    <div className="modal">
+      {/* Display update form in a modal */}
+      <h2>Update Contact</h2>
+      {/* Similar input fields as in ContactForm */}
+      <button onClick={handleUpdate}>Update</button>
+      <button onClick={onClose}>Cancel</button>
+    </div>
+  );
+};
+
+export default UpdateContact;
