@@ -1,1 +1,43 @@
+// components/contactForm.jsx
+import React, { useState } from 'react';
+import './style.css';
+
+const ContactForm = ({ addContact }) => {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [location, setLocation] = useState('Manila');
+  const [registeredDate, setRegisteredDate] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validate and add contact logic
+    addContact({
+      fullName,
+      email,
+      contactNumber,
+      location,
+      registeredDate,
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Full Name:
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          required
+          maxLength="30"
+        />
+      </label>
+      {/* Add similar inputs for other fields */}
+      <button type="submit">Add Contact</button>
+    </form>
+  );
+};
+
+export default ContactForm;
 
