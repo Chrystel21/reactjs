@@ -1,1 +1,68 @@
-bjdfjfjfff
+// components/contactTable.jsx
+import React, { useState } from 'react';
+import './style.css';
+import ViewContact from './viewContact';
+import UpdateContact from './updateContact';
+import DeleteContact from './deleteContact';
+
+const ContactTable = ({ contacts }) => {
+  const [selectedContact, setSelectedContact] = useState(null);
+
+  const handleView = (contact) => {
+    setSelectedContact(contact);
+  };
+
+  const handleUpdate = (contact) => {
+    setSelectedContact(contact);
+    // Implement logic to show update modal
+  };
+
+  const handleDelete = (contact) => {
+    setSelectedContact(contact);
+    // Implement logic to show delete modal
+  };
+
+  return (
+    <div>
+      {/* Display contacts in a table */}
+      <table>
+        <thead>
+          <tr>
+            {/* Add table headers */}
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Location</th>
+            <th>Registered Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {contacts.map((contact) => (
+            <tr key={contact.id}>
+              {/* Display contact data */}
+              <td>{contact.fullName}</td>
+              <td>{contact.email}</td>
+              <td>{contact.contactNumber}</td>
+              <td>{contact.location}</td>
+              <td>{contact.registeredDate}</td>
+              <td>
+                <button onClick={() => handleView(contact)}>View</button>
+                <button onClick={() => handleUpdate(contact)}>Update</button>
+                <button onClick={() => handleDelete(contact)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* Modals for view, update, delete */}
+      {selectedContact && <ViewContact contact={selectedContact} onClose={() => setSelectedContact(null)} />}
+      {selectedContact && <UpdateContact contact={selectedContact} onClose={() => setSelectedContact(null)} />}
+      {selectedContact && <DeleteContact contact={selectedContact} onClose={() => setSelectedContact(null)} />}
+    </div>
+  );
+};
+
+export default ContactTable;
+
